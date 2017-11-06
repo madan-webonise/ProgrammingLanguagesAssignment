@@ -17,7 +17,7 @@ class UsecaseForShopping
               cout<<"\n"<<iQuantity<<"  \t\t"<<iPrice<<"  \t"<<iTotal<<"\n";
               return iTotal;
         }
-        void Usecase2()
+        void Usecase1()
         {     
                 iColgateQuantity = 1;
                 cout<<"\nQuantity         Price   Total";
@@ -30,6 +30,6 @@ int main()
         UsecaseForShopping usecaseobject;
 	cout<<"\nPrice of Colgate : 10 Rs";
 	cout<<"\nPrice of Closeup : 15 Rs";
-	usecaseobject.Usecase2();
+	usecaseobject.Usecase1();
 	return 0;
 }
