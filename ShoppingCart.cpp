@@ -5,72 +5,66 @@ using namespace std;
 class ShoppingCart
 {
         public :
-        int iColgateQuantity;
-        int iCloseupQuantity;
+        int iTotal;
         int iColgateAmount;
         int iCloseupAmount;
         int iDiscountAmount;
-        int iTotal;
-        
-        ShoppingCart()
-        {
+        int iColgateQuantity;
+        int iCloseupQuantity;
+          
+        ShoppingCart() {
                 iColgateQuantity = 0;
                 iCloseupQuantity = 0;
         }
-        void ListItem()
-        {
+        //ShoppingCart() Constructor initializes the product quantities
+        void ListItem() {
                 int iChoice;
                 cout<<"\n//////////////////////////////////ITEM LIST////////////////////////////////////////";
                 cout<<"\nColgate"<<"\t"<<iColgateQuantity;
                 cout<<"\nCloseup"<<"\t"<<iCloseupQuantity;
         }
-        void AddItem()
-        {
+        //ListItem() Lists the product and their quantity
+        void AddItem() {
                 int iItemChoice;
                 int iInputQuantity;
                 cout<<"\nEnter 1 for colgate";
                 cout<<"\nEnter 2 for closeup";
                 cin>>iItemChoice; 
                 
-                if(iItemChoice == 1)
-                {
+                if( iItemChoice == 1 ) {
                         cout<<"\nEnter the total quantity for colgate";
                         cin>>iInputQuantity;
                         iColgateQuantity = iColgateQuantity + iInputQuantity;                       
                 }
-                if(iItemChoice == 2)
-                {
+                if( iItemChoice == 2 ) {
                         cout<<"\nEnter the total quantity for closeup";
                         cin>>iInputQuantity;
                         iCloseupQuantity = iCloseupQuantity + iInputQuantity;                       
                 }
                               
         }
-        
-        void RemoveItem()
-        {
+        //AddItem() adds items to the cart, here it increases the quantity of the product
+        void RemoveItem() {
                 int iItemChoice;
                 int iInputQuantity;
                 cout<<"\nEnter 1 for colgate";
                 cout<<"\nEnter 2 for closeup";
                 cin>>iItemChoice; 
                 
-                if(iItemChoice == 1)
-                {
+                if( iItemChoice == 1 ) {
                         cout<<"\nEnter the total quantity to be removed from colgate";
                         cin>>iInputQuantity;
                         iColgateQuantity = iColgateQuantity - iInputQuantity;                       
                 }
-                if(iItemChoice == 2)
-                {
+                if( iItemChoice == 2 ) {
                         cout<<"\nEnter the total quantity to be removed from closeup";
                         cin>>iInputQuantity;
                         iCloseupQuantity = iCloseupQuantity - iInputQuantity;                       
                 } 
                       
         }
-        int CheckDiscount()
-        {
+        //RemoveItem() removes items from the cart, here it decreases the quantity of the product
+        int CheckDiscount() {
                 int iQuotient;
                 int iRemiander;
                 int iApplyDiscountChoice;
@@ -82,26 +76,22 @@ class ShoppingCart
                 cout<<"\n1 :Yes";
                 cout<<"\n2 :No";
                 cin>>iApplyDiscountChoice;
-                if(iApplyDiscountChoice == 1)
-                {
+                if ( iApplyDiscountChoice == 1 ) {
                         iQuotient = iColgateQuantity / 3;
                         iRemiander = iColgateQuantity % 3;
                         
                         iColgateAmount = (iQuotient * 20) + (iRemiander *10);
                         cout<<"\niColgateAmount "<<iColgateAmount;
                         return iColgateAmount;   
-                }
-                else
-                {
+                } else {
                         iColgateAmount = iColgateQuantity * iColgatePrice;
                         cout<<"\niColgateAmount "<<iColgateAmount;
                         return iColgateAmount;
                 }
                 
         }
-        
-        void CalculateTotalBill()
-        {
+        //CheckDiscount() checks if there is discount available and applies the discount if user agrees
+        void CalculateTotalBill() {
                 iCloseupAmount = iCloseupQuantity * iCloseupPrice;
                 iTotal = iCloseupAmount + iColgateAmount;
                 cout<<"\nItem"<<" \t"<<"\tQuantity"<<"\t\t"<<"Price"<<"\t\t"<<"Total";
@@ -109,14 +99,13 @@ class ShoppingCart
                 cout<<"\nCloseUp\t\t"<<iCloseupQuantity<<"\t\t\t"<<iCloseupPrice<<"\t\t"<<iCloseupAmount;
                 cout<<"\n\t\t\t\t\t\t\t"<<iTotal<<"\n";
         }
-        void Checkout()
-        {
+        //CalculateTotalBill() calculates the total bill
+        void Checkout() {
               CalculateTotalBill();         
         }
-  
+        //Checkout() invokes CalculateTotalBill and this the last function to be executed
 };
-int main()
-{
+int main() {
         int iChoice;
         ShoppingCart cartobject;
 	do
@@ -129,8 +118,7 @@ int main()
 	        cout<<"\n6 : Exit";
 	        cout<<"\nEnter your choice";
 	        cin>>iChoice;
-	        switch(iChoice)
-	        {
+	        switch(iChoice) {
 	                case 1:
 	                 cartobject.ListItem();
 	                break;
@@ -153,6 +141,5 @@ int main()
 	        }
 
         }while(iChoice != 5);
-
 	return 0;
 }
